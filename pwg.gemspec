@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.email         = ["info@nandito.info"]
 
   spec.summary       = %q{CLI password generator}
-  spec.description   = %q{Generate password in cli}
-  spec.homepage      = "http://nandito.info"
+  spec.description   = %q{Generate passwords in command line.}
+  spec.homepage      = "https://github.com/nandito/pwg"
   spec.license       = "MIT"
 
   spec.files         = Dir['lib/**/*.rb']
