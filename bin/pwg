@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+require 'pwg'
+require 'optionparser'
+
+options = Optparse.parse(ARGV)
+
+if options[:length] > 0
+  l = options[:length]
+  c = options[:characterset]
+  pass = Pwg::PasswordGenerator.new
+  STDOUT.puts "#{l} char password: #{pass.genpass(l, c)}"
+else
+  puts 'The given argument is not accepted. Try: ruby pwd.rb --help'
+end
