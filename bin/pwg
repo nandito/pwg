@@ -2,14 +2,22 @@
 
 require 'pwg'
 require 'optionparser'
+require "logger"
 
 options = Optparse.parse(ARGV)
 
-if options[:length] > 0
+def is_valid_charset?(charset)
+  valid_characterset = %w{l u n s L U N S}
+  is_it = true
+  charset.each { |x| is_it = false if !valid_characterset.include?(x) }
+  is_it
+end
+
+if options[:length] > 0 && is_valid_charset?(options[:characterset])
   l = options[:length]
   c = options[:characterset]
   pass = Pwg::PasswordGenerator.new
   STDOUT.puts "#{l} char password: #{pass.genpass(l, c)}"
 else
-  puts 'The given argument is not accepted. Try: ruby pwd.rb --help'
+  STDOUT.puts 'The given argument is not accepted. Try: pwg --help'
 end
